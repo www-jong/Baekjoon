@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # 파이썬
-.ipynb
+*.ipynb
