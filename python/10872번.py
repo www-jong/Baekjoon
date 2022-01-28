@@ -14,9 +14,9 @@
 #     name: python3
 # ---
 
-# 이게 정답. 문제를 제대로읽자! 이상하게 어렵게읽어서 1시간이날라갔다
-for i in range(int(input())):
-    h,w,n=map(int,input().split());b=(n-1)//h;a=(n-h*(n//h));
-    if a==0:a=h
-    print("%d%d"%(a*10 if b+1<10 else a,b+1));
+n=int(input())
+ans=1
+for i in range(1,n+1):
+    ans*=i
+print(ans)
 

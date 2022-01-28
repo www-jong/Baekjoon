@@ -14,9 +14,22 @@
 #     name: python3
 # ---
 
-# 이게 정답. 문제를 제대로읽자! 이상하게 어렵게읽어서 1시간이날라갔다
-for i in range(int(input())):
-    h,w,n=map(int,input().split());b=(n-1)//h;a=(n-h*(n//h));
-    if a==0:a=h
-    print("%d%d"%(a*10 if b+1<10 else a,b+1));
+# +
+n=int(input())
+p=[0,1]
+if n>=2:
+    for i in range(2,n+1):
+        p.append(p[i-1]+p[i-2])
+    print(p[n])
+else:
+    print(n)
 
+
+# -
+
+
+# 숏코딩
+a=0;b=1
+exec("a,b=b,a+b;"*int(input()))
+print(a)
+# 이런방법이!
