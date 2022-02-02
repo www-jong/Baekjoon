@@ -15,21 +15,54 @@
 # ---
 
 # +
+"""
+동적계획법을 쓰고있었다;
 V,E=map(int,input().split())
+min=10000
+road=[[0 for i in range(V+1)] for i in range(V+1)]
+dp_fi=road
+for i in range(E):
+  a,b,c=map(int,input().split())
+  road[a][b]=c
+# 시작지점은 상관없다.
+# 모든시작지점의 경우를 동적으로 계산해야된다.
+for i in range(1,V+1):
+    dp=[0 for s in range(V+1)]
+    # dp[현재마을]=이동한거리
+    for j in range(1,V+1):#처음 출발값 dp에 넣어주기
+        dp[j]=road[i][j]
+    while True:
+
+                
+print(min)
+# -
+"""
+import sys
+INF=100000000000
+V,E=map(int,input().split())
+road=[[INF for i in range(V)] for i in range(V)]
 
 for i in range(E):
-    arr=[[100000000 for i in range(V+1)] for j in range(V+1)]
-    a,b,c=map(int,input().split())
-    if arr[a][b]!=0:  # 이미 길이 있다면 최소값으로
-        arr[a][b]=min(c,arr[a][b])
-    else: #길이없다면 그냥 넣기
-    arr[a][b]=c
-
-for i in range()
-print(arr)
-# -
-
-
-
-
-
+  a,b,c=map(int,sys.stdin.readline().split())
+  road[a-1][b-1]=c
+dp=road
+for k in range(V):
+    for s in range(V):
+        for e in range(V):
+            dp[s][e]=min(dp[s][k]+dp[k][e],dp[s][e])
+min_val=INF
+for i in range(V):
+    for j in range(V):
+        min_val=min(min_val,dp[i][j]+dp[j][i])
+if min_val==INF:
+    print('-1')
+else:
+    print(min_val)
+'''
+3 4
+1 2 1
+3 2 1
+1 3 5
+2 3 2
+3
+'''
