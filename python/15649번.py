@@ -1,15 +1,20 @@
-n,m=map(int,input().split())
+m,n=map(int,input().split())
+arr=[0 for _ in range(n)]
+##arr=[[0 for _ in range(n)] for _ in range(m*n)]
+start=[i for i in range(1,n+1)]
+count=0
+check=[1 for i in range(n)]
 
-arr=[]
+for i in range(n*m):
 
-def func():
-    if len(arr)==m:
-        print(*arr,sep=" ")
-        return
-    for i in range(1,n+1):
-        if i not in arr:
-            arr.append(i)
-            func()
-            arr.pop()
-func()
+
+
+
     
+
+
+def func(num):
+    
+
+
+func(0)
