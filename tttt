@@ -1,0 +1,11 @@
+from pyspark.sql import Row
+csv_data=sc.textFile("/home/bigdata/dev/sparkdata/Spark-Import-CSV/names.csv")
+csv_data.take(5)
+csv_data1=csv_data.map(lambda p:p.split(","))
+csv_data1.take(5)
+header=csv_data1.first()
+csv_data2=csv_data1.filter(lambda p:p!=header)
+csv_data2.take(5)
+df_csv = csv_data2.map(lambda p: Row(EmployeeID = int(p[0]), FirstName = p[1],Title=p[2], State=p[3], Laptop=p[4])).toDF()
+df_csv.createOrReplaceTempView("names")
+spark.sql("select * from names where State='PA'").show()
