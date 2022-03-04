@@ -1,0 +1,1 @@
+print(int("0x"+input().lower(),16))
