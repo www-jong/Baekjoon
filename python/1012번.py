@@ -14,10 +14,11 @@ for i in range(T):
     for aa in range(N):
         for bb in range(M):
             q=deque()
+            count=0
             if graph[aa][bb]==1 and visit[aa][bb]==0:
                 visit[aa][bb]=1
                 q.append((aa,bb))
-                count=0
+                count=1
             else:continue
 
             while q:
@@ -27,7 +28,7 @@ for i in range(T):
                 for i in range(4):
                     nx=x+dx[i]
                     ny=y+dy[i]
-                    if 0<=nx<N and 0<ny<M:
+                    if 0<=nx<N and 0<=ny<M:
                         if visit[nx][ny]==0 and graph[nx][ny]==1:
                             visit[nx][ny]=visit[x][y]
                             q.append((nx,ny))
