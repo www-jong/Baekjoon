@@ -5,6 +5,7 @@ d.sort()
 list=[]
 count=0
 def func():
+    
     global count
     if count==1:
         return
