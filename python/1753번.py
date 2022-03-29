@@ -1,40 +1,33 @@
-def get_smallest_node():
-    min_value=INF
-    index=0
-    for i in range(1,V+1):
-        if dist[i]<min_value and visited[i]!=1:
-            min_value=dist[i]
-            index=i
-    return index
-
-def dij(start):
-    dist[start]=0
-    visited[start]=1
-    for i in graph[start]:
-        dist[i[0]]=i[1]
-    for i in range(V-1):
-        now=get_smallest_node()
-        visited[now]=1
-        for j in graph[now]:
-            cost=dist[now]+j[1]
-            if cost<dist[j[0]]:
-                dist[j[0]]=cost
-
+import heapq
+import sys
 INF=int(1e9)
-V,E=map(int,input().split())
-start=int(input())
+V,E=map(int,sys.stdin.readline().split())
+start=int(sys.stdin.readline())
 graph=[[] for i in range(V+1)]
-visited=[0]*(V+1)
 dist=[INF]*(V+1)
 for i in range(E):
-    a,b,c=map(int,input().split())
-    graph[a].append((b,c))
-    
-dij(start)
+    g1,g2,g3=map(int,sys.stdin.readline().split())
+    graph[g1].append((g2,g3))
+
+def dijkstra(start):
+    q=[]
+    global dist
+    heapq.heappush(q,(0,start))
+    dist[start]=0
+    while q:
+        dists,now=heapq.heappop(q)
+        if dist[now]<dists:
+            continue
+        for i in graph[now]:
+            cost=dists+i[1]
+            if cost<dist[i[0]]:
+                dist[i[0]]=cost
+                heapq.heappush(q,(cost,i[0]))
+                
+dijkstra(start)
 for i in range(1,V+1):
     if dist[i]==INF:
         print("INF")
+
     else:
         print(dist[i])
-    
-    
