@@ -1,2 +1,1 @@
-a=7
-print(a//3)
+a=list(input())
