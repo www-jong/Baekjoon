@@ -1,3 +1,7 @@
-a=101
-print(int(a**0.5))
-print(int(a**0.5)+1)
+a={}
+a[(1,2)]=3
+a[(1,2)]=3
+a[(1,3)]=4
+for a,b in a.items():
+    print(a)
+    print(b)
