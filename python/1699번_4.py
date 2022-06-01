@@ -28,19 +28,19 @@
 만약, dp[i]가 3개의 제곱수의합형태(29처럼 4+9+16)이라 하자.
 이것은 4+25 즉, 제곱수2개의 합형태가 가능함
 다른예시로, 4+16+25인 45를 보면, 36+9로 표현가능함
-
-이때, i>j*j이며, i가 5일때, j는 1부터 2까지 루프를 돔
-
-특이점 : 13인경우, 4와 9로 이루어져 2를 가짐
---> dp[13]=dp[13-9]+1 이렇게 2를 가지게 됨
+다른예시로, 65는 4+25+36이며, 49+16으로 표현가능함. 
+66은 49+17로 표현가능한데 이는 dp[17]+1로 표현가능함
+--> dp[i]=min(dp[i-j])+1 로 표현가능함
+(이때, j는 제곱수이며 i>j)
 '''
 n=int(input())
-dp=[i for i in range(n+1)]
-li=[]
+dp=[0]*(n+1)
+li=[i**2 for i in range(1,317)]
 for i in range(1,n+1):
-    for j in range(1,i):
-        if j*j>i:
+    temp=[]
+    for j in li:
+        if j>i:
             break
-        dp[i]=min(dp[i],dp[i-j*j]+1)
-for i in range(1,n+1):
-    print('%d : %d'%(i,dp[i]))
+        temp.append(dp[i-j])
+    dp[i]=min(temp)+1
+print(dp[n])
