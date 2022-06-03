@@ -1,8 +1,14 @@
-best=-1
+li=[]
 for i in range(int(input())):
-    a=list(map(int,input().split()))
-    if len(set(a))==1:
-        best=10000+1000*a[0]
+    a,b,c=map(int,input().split())
+    if a==b==c:
+        li.append(10000+a*1000)
+    elif a==b:
+        li.append(1000+a*100)
+    elif a==c:
+        li.append(1000+a*100)
+    elif b==c:
+        li.append(1000+b*100)
     else:
-        for i in range(3):
-            
+        li.append(max(a,b,c)*100)
+print(max(li))
