@@ -14,7 +14,7 @@ for i in range(int(input())):
     else:
         s[4]+=1
 print('Q1: ',s[0])
-print('Q2: ',s[1])
+print('Q2: ',s[2])
 print('Q3: ',s[3])
-print('Q4: ',s[2])
+print('Q4: ',s[1])
 print('AXIS: ',s[4])
