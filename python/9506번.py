@@ -9,4 +9,4 @@ while True:
         print("%d = %s"%(s," + ".join(str(i) for i in li)))
         #print(li)
     else:
-        print("%d is Not perfect."%(s))
+        print("%d is NOT perfect."%(s))
