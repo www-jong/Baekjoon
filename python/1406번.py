@@ -15,10 +15,4 @@ for i in range(int(sys.stdin.readline())):
             if cur!=0:
                 n.pop(cur-1)
                 cur-=1
-print(*n)
-
-'''
-abcd
-
-
-'''
+print(*n,sep="")
