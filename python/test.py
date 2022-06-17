@@ -1,6 +1,6 @@
 a={}
-a[10]="hf"
-a[1]="d"
-a[5]="g"
-for i in a.keys():
-    print(i)
+a[10]=[1,2]
+a[23]=[3,4]
+a[5]=[1]
+a[2]=3
+print(a.keys().sort())
