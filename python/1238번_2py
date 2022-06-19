@@ -1,39 +1,32 @@
-import sys
-from collections import deque
-n,m,x=map(int,sys.stdin.readline().split())
-graph=[[] for i in range(1+n)]
+import heapq,sys
+input=sys.stdin.readline
+inf=int(1e9)
+
+n,m,x=map(int,input().split())
+graph=[[] for _ in range(n+1)]
 for i in range(m):
-    a,b,c=map(int,sys.stdin.readline().split())
+    a,b,c=map(int,input().split())
     graph[a].append((b,c))
 
-def bfs(node,end,mode):
-    visit=[-1]*(n+1)
-    q=deque()
-    q.append((node))
-    visit[node]=0
-    min=10**9
+def distra(start):
+    q=[]
+    dis=[inf]*(n+1)
+    heapq.heappush(q,(0,start))
+    dis[start]=0
     while q:
-        now=q.popleft()
-        if now==end:
-            if visit[now]<min:
-                min=visit[now]
-        for i,j in graph[now]:
-            if visit[i]==-1:
-                visit[i]=visit[now]+j
-                q.append((i))
-            elif visit[i]>visit[now]+j:
-                visit[i]=visit[now]+j
-                q.append((i))
-    if mode==0:
-        return min+bfs(end,node,1)
-    else:
-        return min
-max=-1
-ans=-1
+        dist,now=heapq.heappop(q)
+        if dis[now]<dist:
+            continue
+        for node_index,node_cost in graph[now]:
+            cost=dist+node_cost
+            if dis[node_index]>cost:
+                dis[node_index]=cost
+                heapq.heappush(q,(cost,node_index))
+    return dis
+
+result=0
 for i in range(1,n+1):
-    val=bfs(i,x,0)
-    if val:
-        if val>max:
-            max=val
-            ans=i
-print(max)
+    go=distra(i)
+    back=distra(x)
+    result=max(result,go[x]+back[i])
+print(result)
