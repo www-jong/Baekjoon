@@ -5,6 +5,7 @@ for i in range(int(sys.stdin.readline())):
     pp=((abs(x2-x1)**2)+(abs(y2-y1)**2))**0.5 # 두점사이거리
     ptop=r1+r2
     
+
     if pp<ptop: 
         if (x1==x2)and(y1==y2):
             if r1==r2:
@@ -25,4 +26,4 @@ for i in range(int(sys.stdin.readline())):
             ans=-1
         else:ans=0
     print(ans)
-            
+   
