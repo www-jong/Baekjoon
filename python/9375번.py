@@ -11,7 +11,6 @@ for _ in range(int(input())):
         ans=1
         for i in dic.keys():
             ans*=(dic[i]+1)
-            print(dic[i])
         print(ans-1)
     else:
         print(0)

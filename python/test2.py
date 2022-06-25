@@ -1,3 +1,4 @@
-import math
-a,b=map(int,input().split())
-print(math.perm(a,a-b))
+a=2
+b=5
+for i in range(1,10):
+    print(((a-1)//3)*3+1+(i-1)//3,((b-1)//3)*3+1+(i-1)%3)
