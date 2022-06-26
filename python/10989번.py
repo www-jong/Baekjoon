@@ -9,7 +9,4 @@ for i in range(1,10001):
     if arr[i]!=0:
         for j in range(arr[i]):
              sys.stdout.write(str(i)+"\n")
-
-
-#        s+=(str(i)+"\n")*arr[i]
 #print(s)
