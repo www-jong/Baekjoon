@@ -19,8 +19,3 @@ for i in range(0,3000):
                 ar+=[st]
 ar2=sorted(set(ar))
 print(ar2[n-1])
-
-#for i in range(666,10000):
-#    st=str(i)
-#    if re.findall("666",st):
-#        ar+=[st]
