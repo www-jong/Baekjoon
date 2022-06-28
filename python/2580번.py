@@ -6,28 +6,6 @@ for i in range(9):
         if tmp[j]==0:
             emp.append((i+1,j+1))
     maps.append([0]+tmp)
-tmp2=[]
-def func():
-    if len(tmp2)==len(emp):
-        return tmp2
-    for i in emp:
-        for j in range(1,9):
-            tmp2.append((i[0],i[1],j))
-            func()
-            tmp2.pop()
-def checker(a,b,c):
-    check=0
-    if maps[a][b]!=0:
-        for i in range(1,10):
-            if c==maps[a][i] and i!=b:
-                check=1
-            if c==maps[i][b] and i!=a:
-                check=1
-            if c==maps[((a-1)//3)*3+1+(i-1)//3][((b-1)//3)*3+1+(i-1)%3] and ((a-1)//3)*3+1+(i-1)//3!=a and ((b-1)//3)*3+1+(i-1)%3!=b:
-                check=1
-    else:
-        check=2
-    return check
 def pusher(a,b):
     re=set([1,2,3,4,5,6,7,8,9])
     tmp1=[]
@@ -52,6 +30,7 @@ def pusher(a,b):
             maps[a][b]=list(re-set(tmp3))[0]
             check=1
     return check
+
 for _ in range(3):
     emp2=[]
     for i in range(len(emp)):
@@ -59,7 +38,6 @@ for _ in range(3):
         if check==0:
             emp2.append(emp[i])
     emp=emp2
-print(emp)
 for i in range(1,10):
     print(*maps[i][1:10])
         
