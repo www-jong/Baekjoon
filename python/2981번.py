@@ -2,25 +2,18 @@ import math
 li=[]
 for i in range(int(input())):
     li.append(int(input()))
-li.sort()
+li.sort(reverse=True)
+li2=[li[0]-li[1]]
+for i in range(1,len(li)-1):
+    li2.append(li[i]-li[i+1])
 mins=min(li)
-gcds=math.gcd(*li)
-ans=[]
-if gcds!=1:
-    for i in range(1,20):
-        if gcds*i<mins:
-            ans.append(gcds**i)
-else:
-    for i in range(2,mins+1):
-        tmp=0
-        for j in li:
-            if tmp==0:
-                tmp=j%i
-            else:
-                if j%i!=tmp:
-                    tmp=-1
-        if tmp!=-1:
-            ans.append(i)
+gcds=math.gcd(*li2)
+ans=[gcds]
+for i in range(2,gcds//2+1):
+    if gcds%i==0:
+        ans.append(gcds//i)
+ans.sort()
+print(gcds)
 print(*ans)
 
 '''
