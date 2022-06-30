@@ -13,7 +13,6 @@ for i in range(2,gcds//2+1):
     if gcds%i==0:
         ans.append(gcds//i)
 ans.sort()
-print(gcds)
 print(*ans)
 
 '''
