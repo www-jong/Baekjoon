@@ -1,4 +1,5 @@
-import sys
+import sys,bisect
+sys.setrecursionlimit(10**9)
 input=sys.stdin.readline
 k,n=map(int,input().split())
 min=1
@@ -9,13 +10,18 @@ for i in range(k):
     li.append(tmp)
     if tmp>max:
         max=tmp
+li.sort()
+def getrope(num):
+    start=bisect.bisect_left(li,num)
+    re=0
+    for i in range(start,k):
+        re+=li[i]//num
+    return re
+
 while min<=max:
-    mid=(min+max)//2
-    val=0
-    for i in li:
-        val+=i//mid
-    if val>=n:
-        min=mid+1
+    val=getrope((min+max)//2)
+    if val<n:
+        max=(min+max)//2-1
     else:
-        max=mid-1
-print(min)
+        min=(min+max)//2+1
+print(max)
