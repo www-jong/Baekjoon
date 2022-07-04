@@ -1,16 +1,53 @@
-import sys
-K, N = map(int, input().split())
-lan = [int(sys.stdin.readline()) for _ in range(K)]
-start, end = 1, max(lan) #이분탐색 처음과 끝위치
 
-while start <= end: #적절한 랜선의 길이를 찾는 알고리즘
-    mid = (start + end) // 2 #중간 위치
-    lines = 0 #랜선 수
-    for i in lan:
-        lines += i // mid #분할 된 랜선 수
-        
-    if lines >= N: #랜선의 개수가 분기점
-        start = mid + 1
-    else:
-        end = mid - 1
-print(end)
+maps=[[1]*(10) for i in range(10)]
+for i in range(1,10):
+    print(maps[i][1:10])
+for i in range(1,10):
+    for j in range(1,10):
+        x=1+(j-1)//3+3*((i-1)%3)
+        y=1+(j-1)%3+3*((i-1)//3)
+        maps[x][y]=0
+        print("%d : %d"%(x,y))
+coun=0
+for i in range(1,10):
+    coun+=1
+    print(maps[i][1:10])
+print(coun)
+'''
+1,4,7 -> 1
+2, 5, 8 -> 2
+3 ,6 ,9 -> 3
+1,1 - 1,1
+1,2 - 1,2
+1,3 - 1,3
+1,4 - 2,1
+1,5 - 2,2
+1,6 - 2,3
+1,7 - 3,1
+1,8 - 3,2
+1,9 - 3,3
+
+2,1 - 4,1
+2,2 - 4,2
+2,3 - 4,3
+2,4 - 5,1
+2,5 - 5,2
+2,6 - 5,3
+2,7 - 6,1
+2,8 - 6,2
+2,9 - 6,3
+
+3,1 - 7,1
+..
+
+4,1 - 1,4
+4,2 - 1,5
+4,3 - 1,6
+5,1 - 2,4
+5,2 - 2,5
+5,3 - 2,6
+6,1 - 3,4
+6,2 - 3,5
+6,3 - 3,6
+
+'''
