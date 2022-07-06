@@ -1,6 +1,7 @@
 import sys
 for i in range(int(sys.stdin.readline())):
     ans=0
+
     x1,y1,r1,x2,y2,r2=map(int,sys.stdin.readline().split())
     pp=((abs(x2-x1)**2)+(abs(y2-y1)**2))**0.5 # 두점사이거리
     ptop=r1+r2
