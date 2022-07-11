@@ -8,6 +8,6 @@ for i in range(1,n):
             dp[i]=dp[j]
     dp[i]+=1
 print(max(dp))
-    
+print(dp)    
     
 # n번째에서 0~n-1번째까지, 자기자신보다 작고 그중 가장 큰 값의 길이를 구해 1을 더함
