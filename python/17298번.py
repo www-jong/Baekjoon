@@ -1,19 +1,23 @@
+from collections import deque
 import sys
 input=sys.stdin.readline
 n=int(input())
 li=list(map(int,input().split()))
-ans=[]
-idx=0
-for i in range(n):
-    tmp=0
-    while True:
-        if idx>=n:
-            ans.append(-1)
-            idx=i+1
-            break
-        if li[idx]>li[i]:
-            ans.append(li[idx])
+check=[-1]*(n)
+i=0
+ch=0
+while i<=n:
+    co,ch=1,0
+    for j in range(i+1,n):
+        if li[j]>li[i]:
+            for m in range(i,i+co):
+                check[m]=li[j]
+            ch=1
             break
         else:
-            idx+=1
-print(ans)
+            co+=1
+    if ch==1:
+        i+=co
+    else:
+        i+=1
+print(*check)

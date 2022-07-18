@@ -5,4 +5,3 @@ ans=0
 for i in range(n):
     ans+=(n-i)*li[i]
 print(ans)
-print(li)

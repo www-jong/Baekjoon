@@ -1,4 +1,2 @@
-def get_cart_prd(pools):
-  result = [[]]
-  for pool in pools:
-    result = [x+[y] for x in result for y in pool]
+for i in range(5,-1,-1):
+  print(i)
