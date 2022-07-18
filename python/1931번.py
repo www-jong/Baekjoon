@@ -18,3 +18,6 @@ for i in dic.keys():
     li.append((i,dic[i]))
 li.sort()
 print(li)
+'''
+백트래킹이 안됨 시간초과
+'''
