@@ -1,3 +1,6 @@
+import sys
+limit_number = 15000
+sys.setrecursionlimit(limit_number)
 n=int(input())
 maps=[[0]*(n+1)]
 
