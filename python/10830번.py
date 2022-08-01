@@ -2,7 +2,6 @@ N,B=map(int,input().split())
 A=[]
 for i in range(N):
     A.append(list(map(int,input().split())))
-print(A)
 
 def func(li1,li2):
     tmp=0
@@ -38,8 +37,3 @@ def sqrt(a,b):
 ans=sqrt(A,B)
 for i in range(N):
     print(*ans[i])
-'''
-51   49
-25   
-'''
-    
