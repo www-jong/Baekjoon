@@ -1,1 +1,1 @@
-print("CY" if int(input())%2==0 else "SL")
+print("CY" if int(input())%2==0 else "SK")
