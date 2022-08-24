@@ -2,7 +2,7 @@ import sys
 input=sys.stdin.readline
 n,m=map(int,input().split())
 li=list(map(int,input().split()))
-st,end=min(li),max(li)
+st,end=0,max(li)
 while st<=end:
     mid=(st+end)//2
     ans=0
