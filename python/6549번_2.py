@@ -1,38 +1,55 @@
 import sys
+input=sys.stdin.readline
+sys.setrecursionlimit(10**8)
 
 while True:
-    li=list(map(int,sys.stdin.readline().rstrip().split()))
+    li=list(map(int,input().split()))
     if li[0]==0:
         break
-    li.pop(0)
-    tmp=li[0]
-    tmpheight=li[0]
-    end=0
-    n,m=len(li),0
-    tmpst=0
-    tmpend=0
-    for st in range(n):
-        while tmp<m and end<n:
-            if tmpheight<li[end]:
-                tmpheight=li[end]
-            tmp=tmpheight*(end-st+1)
-            end+=1
-        if tmp>m:
-            m=tmp
-            tmpst=st
-            tmpend=end
-        print("start : %d, end : %d"%(st,end))
-        if end-(st+1)>=1:
-            ttmin=min(min(li[st+1:end]),li[st])
-        else:
-            ttmin=li[len(li)-1 if end==len(li) else end]
-        if li[st]<ttmin:
-            tmpheight=ttmin
-            tmp=tmpheight*(end-st+1)
-        else:
-            tmp-=tmpheight
-    print("%d %d %d"%(m,tmpst,tmpend))
+    else:
+        n=li[0]
+        li.pop(0)
+    
+    tree=[0]*(n*4)
+    mintree=[0]*(n*4)
+    maxval=0
+    def makemintree(idx,start,end):
+        global maxval
+        if start==end:
+            mintree[idx]=(li[start],li[start])
+            return mintree[idx]
+        mid=start+(end-start)//2
+        left=makemintree(idx*2,start,mid)
+        right=makemintree(idx*2+1,mid+1,end)
+        mintree[idx]=(min(left[0],right[0]),min(left[0],right[0])*(end-start+1))
+        if mintree[idx][1]>maxval:
+            maxval=mintree[idx][1]
+        return mintree[idx]
+    # tree 생성 함수
+    def maketree(idx,start,end):
+        if start==end:
+            tree[idx]=li[start]
+            return tree[idx]
+        mid=start+(end-start)//2
+        tree[idx]=maketree(2*idx,start,mid)+maketree(2*idx+1,mid+1,end)
+        return tree[idx]
 
-'''
-투포인터로 각 구간의 합(구간의길이*구간에서 가장 작은값)을 구한다
-'''
+    # tree에서 구간합 구하는 함수
+    def query(idx,start,end,left,right):
+        if end<left or start>right:
+            return 0
+
+        if start<=left and right<=end:
+            return tree[idx]
+
+        mid=left+(right-left)//2
+        return query(idx*2,start,end,left,mid)+query(idx*2+1,start,end,mid+1,right)
+
+    maketree(1,0,n-1)
+    makemintree(1,0,n-1)
+    print(mintree)
+    print(maxval)
+
+    '''
+    세그먼트 합// 분할정복 하기 
+    '''
