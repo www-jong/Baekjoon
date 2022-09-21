@@ -29,7 +29,9 @@ for i in dp[N-1].values():
 print(i)
 print(dp)
 
-
+'''
+1 5 4 2 3 6 1 4 2 10
+'''
 
 
 
