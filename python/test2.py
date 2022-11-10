@@ -1,2 +1,2 @@
-a="S"
-print(ord(a))
+import ssl
+print(ssl.OPENSSL_VERSION)
