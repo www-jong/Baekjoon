@@ -1,3 +1,4 @@
+# 시간초과!
 N,M,K=map(int,input().split())
 li=[[0]*(M+1)]
 res=0
@@ -30,6 +31,5 @@ for i in range(N):
     li.append([0]+list(input()))
 for i in range(1,N+1-K+1):
     for j in range(1,M+1-K+1):
-        tmp=check(i,j)
-        res=max(res,tmp)
+        res=max(res,check(i,j))
 print(K**2-res)
