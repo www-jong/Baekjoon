@@ -1,20 +1,27 @@
-c=1
+from sys import stdin
 arr=[1 for _ in range(1000001)]
-
-m=int(1000000**0.5)
-for i in range(2,m+1):
-    if arr[i]==1:
+so=[]
+dic={}
+for i in range(2,1001):
+    if arr[i]:
         for j in range(i+i,1000001,i):
             arr[j]=0
 
-while c!=0:
-    c=int(input())
+for i in range(3,1000001):
+    if arr[i]==1:
+        so.append(i)
+        dic[i]=1
+
+while True:
+    c=int(stdin.readline())
     b=0
-    for i in range(2,c-1):
-        if arr[i]==1 and arr[c-i]==1:
-            print("%d = %d + %d"%(c,i,c-i))
+    idx=0
+    if c==0:
+    	break
+    for i in range(len(so)):
+        if c-so[i] in dic and so[i] in dic:
+            print(f'{c} = {so[i]} + {c-so[i]}')
             b=1
-            break        
-    if b==0 and c!=0:
+            break
+    if b==0:
         print("Goldbach's conjecture is wrong.")
-        
