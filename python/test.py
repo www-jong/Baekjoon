@@ -1,4 +1,6 @@
-li=[0,1,2,3,4,5,6,7,8,9,10]
-print(li[5:0:-1])
-print(li[5:-1:-1])
-print(li[5::-1])
+li=[0,1,2,3]
+for i in range(4):
+    if li[i]==3:
+        print('!!')
+else:
+    print('ㅠㅠ')
