@@ -8,9 +8,9 @@ def up(li):
         for j in range(1,N+1):
             if li[j][i]:
                 tmp,li[j][i]=li[j][i],0
-                if li[poi][i]==0: # 포인터위치가 0인경우
+                if li[poi][i]==0: # 포인터위치값이 0인경우
                     li[poi][i]=tmp
-                elif li[poi][i]==tmp:
+                elif li[poi][i]==tmp: #포인터위치값이 현재값과 같을경우 
                     li[poi][i]*=2
                     poi+=1
                 else:
@@ -71,8 +71,6 @@ for i in range(N):
 
 def dfs(li,count):
     global res
-    #for i in range(1,N+1):
-    #    print(*li[i][1:])
     if count==5:
         for i in range(1,N+1):
             for j in range(1,N+1):
@@ -86,42 +84,3 @@ def dfs(li,count):
     
 dfs(li,0)
 print(res)
-#print(tes)
-'''
-tmpli=deepcopy(li)
-tmpli=left(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=up(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=left(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=down(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=left(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-
-for i in up(deepcopy(li)):
-    print(*i[1:])
-for i in down(deepcopy(li)):
-    print(*i[1:])
-for i in left(deepcopy(li)):
-    print(*i[1:])
-for i in right(deepcopy(li)):
-    print(*i[1:])
-
-4
-2 2 2 2
-2 4 2 4
-4 4 2 4
-8 8 2 8
-
-'''

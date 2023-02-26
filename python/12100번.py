@@ -77,8 +77,6 @@ for i in range(N):
 
 def dfs(li,count):
     global res
-    #for i in range(1,N+1):
-    #    print(*li[i][1:])
     if count==5:
         for i in range(1,N+1):
             for j in range(1,N+1):
@@ -92,42 +90,3 @@ def dfs(li,count):
     
 dfs(li,0)
 print(res)
-#print(tes)
-'''
-tmpli=deepcopy(li)
-tmpli=left(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=up(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=left(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=down(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-print('----')
-tmpli=left(tmpli)
-for i in range(1,N+1):
-    print(*tmpli[i][1:])
-
-for i in up(deepcopy(li)):
-    print(*i[1:])
-for i in down(deepcopy(li)):
-    print(*i[1:])
-for i in left(deepcopy(li)):
-    print(*i[1:])
-for i in right(deepcopy(li)):
-    print(*i[1:])
-
-4
-2 2 2 2
-2 4 2 4
-4 4 2 4
-8 8 2 8
-
-'''
