@@ -12,4 +12,3 @@ for k,v in dic.items():
     if v>res[0]:
         res=v,k
 print(res[1])
-print(res[0])

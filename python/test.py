@@ -1,4 +1,2 @@
-li=[0,1,2]
-for i in li:
-    li.append(2)
-print(li)
+li='bdgs'
+print(sorted(li))
