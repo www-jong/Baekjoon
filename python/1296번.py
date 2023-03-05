@@ -1,18 +1,21 @@
 def res_grade(S):
+    global yun
     dic={'L':0,'O':0,'V':0,'E':0}
-    for i in S:
-        if i not in dic:
-            dic[i]=1
-        else:
+    for i in yun+S:
+        if i in dic:
             dic[i]+=1
-    return ((dic['L']+dic['O'])*(dic['L']+dic['V'])*(dic['L']+dic['E'])*(dic['O']+dic['V']*(dic['V']+dic['E'])))%100
+
+    return ((dic['L']+dic['O'])*(dic['L']+dic['V'])*(dic['L']+dic['E'])*(dic['O']+dic['V'])*(dic['O']+dic['E'])*(dic['V']+dic['E']))%100
 yun=input()
-res=[res_grade(yun),yun]
+res=[-1,'']
 
 N=int(input())
 for i in range(N):
     S=input()
-    print(res_grade(S))
-    if res[0]<res_grade(S):
-        res=[res_grade(S),S]
+    S_val=res_grade(S)
+    if res[0]<S_val:
+        res=[S_val,S]
+    elif res[0]==S_val:
+        if sorted([S,res[1]])[0]==S:
+            res=[S_val,S]
 print(res[1])
