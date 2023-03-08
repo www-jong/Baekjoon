@@ -17,11 +17,12 @@ for i in ball:
     ch=0
     if i>15000:
         print("N",end=" ")
-    for j in range(1,N+1):
-        if dp[j][i]==1:
-            print("Y",end=" ")
-            ch=1
-            break
-    if ch==0:
-        print("N",end=" ")
+    else:
+        for j in range(1,N+1):
+            if dp[j][i]==1:
+                print("Y",end=" ")
+                ch=1
+                break
+        if ch==0:
+            print("N",end=" ")
         
