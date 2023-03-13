@@ -1,9 +1,21 @@
-S=input()
-bomb=input()
-while True:
-    tmp_S=S.replace(bomb,'')
-    if S==tmp_S:
-        S=tmp_S
-        break
-    S=tmp_S
-print('FRULA' if len(S)==0 else S)
+import sys
+input=sys.stdin.readline
+S=list(input().rstrip())
+bomb=list(input().rstrip())
+len_bomb=len(bomb)
+stack=[]
+idx=0
+while idx!=len(S):
+    stack.append(S[idx])
+    if stack[-1]==bomb[-1]:
+        if stack[-len_bomb:]==bomb:
+            for i in range(len_bomb):
+                stack.pop()
+    idx+=1
+'''
+if stack:
+    print(*stack,sep="")
+else:
+    print("FRULA")
+'''
+print(*stack if stack else "FRULA",sep="")

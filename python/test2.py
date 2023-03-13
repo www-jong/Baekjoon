@@ -1,2 +1,2 @@
-import ssl
-print(ssl.OPENSSL_VERSION)
+S='mirkovC4nizCC44'
+print(S[-2:])
