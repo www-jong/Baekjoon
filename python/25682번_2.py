@@ -10,7 +10,7 @@ B_board=[[0]]
 sum_w=[[0]*(M+1) for i in range(N+1)]
 sum_b=[[0]*(M+1) for i in range(N+1)]
 
-for i in range(K):
+for i in range(max(N,M)):
     W='0'+'WB'*((max(N,M)//2)+1)
     B='0'+'BW'*((max(N,M)//2)+1)    
     W_board.append(W if i%2==0 else B)
