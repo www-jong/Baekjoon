@@ -12,10 +12,5 @@ while idx!=len(S):
             for i in range(len_bomb):
                 stack.pop()
     idx+=1
-'''
-if stack:
-    print(*stack,sep="")
-else:
-    print("FRULA")
-'''
+
 print(*stack if stack else "FRULA",sep="")
