@@ -1,5 +1,4 @@
-S='bcaaaaaa'
-tmp_S=[]
-for i in S:
-    tmp_S.append(i)
-    print(tmp_S[-3:])
+li=[1,2,3]
+for i in li:
+    li.append(i+1)
+    print(i)
