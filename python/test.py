@@ -1,4 +1,11 @@
-li=[1,2,3]
-for i in li:
-    li.append(i+1)
-    print(i)
+li=[]
+li.append([2,6])
+li.append([2,3])
+li.append([2,4])
+li.append([2,2])
+li.append([1,7])
+li.append([1,2])
+li.append([5,3])
+li.append([4,1])
+li.sort()
+print(li)
