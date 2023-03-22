@@ -9,7 +9,7 @@ def func(x,idx):
     for i in range(idx+1,10):
         func(str(i)+str(x),i)
 
-if N>1022:
+if N>1023:
     print(-1)
 else:
     func('',-1)
