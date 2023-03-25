@@ -1,7 +1,6 @@
 while True:
     li=list(map(int,input().split()))
     A,B,C=sorted(li,reverse=True)
-    print(f'A:{A} B:{B} C:{C}')
     if A==0 and B==0 and C==0:
         break
     if A==B==C:
