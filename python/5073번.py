@@ -3,14 +3,11 @@ while True:
     A,B,C=sorted(li,reverse=True)
     if A==0 and B==0 and C==0:
         break
-    if A==B==C:
+    if A>=B+C:
+         print('Invalid')
+    elif A==B==C:
         print('Equilateral')
     elif A==B or B==C or A==C:
         print('Isosceles')
-    elif A!=B and B!=C and A!=C:
-        if B+C<=A:
-            print('Invalid')
-        else:
-            print('Scalene')
     else:
-        print('Invalid')
+        print('Scalene')
