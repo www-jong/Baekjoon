@@ -1,11 +1,2 @@
-li=[]
-li.append([2,6])
-li.append([2,3])
-li.append([2,4])
-li.append([2,2])
-li.append([1,7])
-li.append([1,2])
-li.append([5,3])
-li.append([4,1])
-li.sort()
-print(li)
+for i in range(10,1000,10):
+    print(f'{i} : {175*(1-0.995**(i))}')
