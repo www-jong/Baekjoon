@@ -1,5 +1,3 @@
 k,w,m=map(int,input().split())
-res=0
-while k+res*m<w:
-    res+=1
-print(res)
+res=(w-k)//m
+print(res+(1 if (w-k)%m!=0 else 0))
