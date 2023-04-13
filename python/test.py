@@ -1,3 +1,9 @@
-dic={[1,1]:1,[1,3]:1}
-if [1,1] in dic:
-    print('d')
+d=dict()
+d[1]=[]
+d[2]=[]
+d[3]=[]
+d[1].append((1,1))
+d[2].append((1,3))
+d[3].append((2,3))
+d[1].append((2,4))
+print(d)
