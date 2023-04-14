@@ -1,9 +1,6 @@
-d=dict()
-d[1]=[]
-d[2]=[]
-d[3]=[]
-d[1].append((1,1))
-d[2].append((1,3))
-d[3].append((2,3))
-d[1].append((2,4))
-print(d)
+dic={}
+dic[1]='a'
+dic[2]='b'
+dic[3]='c'
+for i in dic.keys():
+    print(i)
