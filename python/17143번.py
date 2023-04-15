@@ -11,30 +11,27 @@ for i in range(1,M+1):
     li[r-1][c-1]=i
     sharks[i]=[r-1,c-1,s,d,z]
 def shark_move():
-    global sharks
+    global sharks,li
+    li=[[0]*(C) for i in range(R)]
     for i in sharks.copy().keys():
-        r,c,s,d,z=sharks[i]
-        new_r,new_c,new_d=get_next_loc(r,c,s,d)
-        if li[new_r][new_c]==0:
-            sharks[i]=[new_r,new_c,s,new_d,z]
-            li[r][c]=0
-            li[new_r][new_c]=i
-        else:
-            if li[new_r][new_c]==i:
+        if i in sharks:
+            r,c,s,d,z=sharks[i]
+            new_r,new_c,new_d=get_next_loc(r,c,s,d)
+            if li[new_r][new_c]==0:
                 sharks[i]=[new_r,new_c,s,new_d,z]
-            elif li[new_r][new_c] in sharks:
+                li[new_r][new_c]=i
+            else:
                 if sharks[li[new_r][new_c]][4]<z:
                     del sharks[li[new_r][new_c]]
                     li[new_r][new_c]=i
-                    li[r][c]=0
                     sharks[i]=[new_r,new_c,s,new_d,z]
                 else:
                     del sharks[i]
-                    li[r][c]=0
-            else:
-                li[new_r][new_c]=i
-                li[r][c]=0
-                sharks[i]=[new_r,new_c,s,new_d,z]
+                #else:
+                #    li[new_r][new_c]=i
+                #    li[r][c]=0
+                #    sharks[i]=[new_r,new_c,s,new_d,z]
+
 def get_next_loc(i, j, speed, dir):
 
     if dir == UP or dir == DOWN:  # i
