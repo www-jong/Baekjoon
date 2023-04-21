@@ -27,7 +27,6 @@ li=[]
 for i in range(1,N+1):
     tmp=[0]+list(map(int,input().split()))
     for j in range(i+1,N+1):
-        print(f'append {i}:{j} -> {tmp[j]}')
         li.append([i,j,tmp[j]])
 li.sort(key=lambda x:x[2])
 res=0
@@ -36,5 +35,4 @@ for i in range(len(li)):
     if find(a)!=find(b):
         res+=v
         union(a,b)
-        print(f'union {a}:{b}')
 print(res)
