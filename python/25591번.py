@@ -1,0 +1,9 @@
+A,B=map(str,input().split())
+a=100-int(A)
+b=100-int(B)
+c=100-(a+b)
+d=a*b
+q=d//100
+r=d%100
+print(a,b,c,d,q,r)
+print(c+q,r)
