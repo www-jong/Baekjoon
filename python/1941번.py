@@ -14,7 +14,6 @@ def func(now,s,im):
         return
     if len(now)==7:
         if check(now):
-            print(now)
             count(now)
         return
     for i in range(s+1,26):
@@ -51,7 +50,6 @@ def count(now):
             queens+=1
         if queens>=4:
             res+=1
-            print(now)
             break
 func([],0,0)
 print(res)
