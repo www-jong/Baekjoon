@@ -1,8 +1,8 @@
 import sys
-sys.setrecursionlimit(1000000)
 input=sys.stdin.readline
+sys.setrecursionlimit(1000000)
 n,m=map(int,input().split())
-res=0
+
 nodes=[i for i in range(n+1)]
 
 def find(a):
@@ -19,12 +19,14 @@ def union(a,b):
             nodes[b]=a
         else:
             nodes[a]=b
-res=0
-for i in range(1,m+1):
-    a,b=map(int,input().split())
-    if find(a)!=find(b):
-        union(a,b)
+
+for i in range(m):
+    c,a,b=map(int,input().split())
+    if c==0:
+        if a!=b:
+            union(a,b)
     else:
-        if res==0:
-            res=i
-print(res)
+        if find(a)==find(b):
+            print('YES')
+        else:
+            print('NO')
