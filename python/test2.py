@@ -1,2 +1,2 @@
-S='mirkovC4nizCC44'
-print(S[-2:])
+for i in range(5,0,-1):
+    print(i)
