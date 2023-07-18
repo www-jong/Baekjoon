@@ -1,4 +1,5 @@
-import math
-A,B,V=map(int,input().split())
-
-print(1+math.ceil(((V-A)/(A-B))))
+a=[[1,1],[2,2]]
+if [1,1] in a:
+    print("!")
+if [1,2] in a:
+    print("!!")
