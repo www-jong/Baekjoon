@@ -1,5 +1,6 @@
-a=[[1,1],[2,2]]
-if [1,1] in a:
-    print("!")
-if [1,2] in a:
-    print("!!")
+dict={'apple':1,'banana':1}
+print(dict['apple'])
+print(dict.apple)
+d='apple'
+print(dict[d])
+print(dict.d)
