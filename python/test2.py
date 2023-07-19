@@ -1,12 +1,17 @@
-n=int(input())
-def bitcount(n):
-    if n==0:
-        return 0
-    return n%2+bitcount(n//2)
-
-print(bitcount(n),bin(n))
-
-b=n
-b&=~1<<3
-print(b, bin(b))
-print(len(bin(b)))
+N=6
+print(bin(2**(N+2)))
+to_bit=[2**i for i in range(N-1,-1,-1)]
+def bit_masking(members,type):
+    tmp=2**(N+1)-1
+    for member in members:
+        tmp-=to_bit[member]
+    if type=='A':
+        for i in range(N//2):
+            tmp-=2**i
+    else:
+        for i in range(N//2,N):
+            #pass
+            tmp-=2**i
+        tmp-=2**(N)
+    return bin(tmp)[2:]
+print(bit_masking([1,2],"A"))
