@@ -1,45 +1,47 @@
-def moo(k):
-    if k==0:
-        return "moo"
-    
-    return moo(k-1)+"m"+"o"*(k+2)+moo(k-1)
+import sys
+sys.setrecursionlimit(10000000)
+input=sys.stdin.readline
 
-moople="_"+moo(15)
-for N in range(1,200):
-    li=[3]
-    check="omoomooomoo"
 
-    ttt=""
-    for i in range(1,34):
-        li.append(li[i-1]*2+(i+3))
-
-    def func(n,s):
-        n-=li[s]
-        if n==1:
-            return "m"
-        if n<=s+4:
-            return "o"
-        n-=s+4
-        if s==0:
-            return check[n]
-        
-        if n>=li[s-1]:
-            return func(n,s-1)
+while True:
+    li=list(map(int,input().split()))
+    res=0
+    if li[0]==0:break
+    else:li.pop(0) 
+    stk=[]
+    min_check=[li[0],0]
+    ch_idx=0
+    for i in li:
+        min_check=[min(min_check[0],i),min_check[1]+1]
+        res=max(min_check[0]*min_check[1],res)
+        idx=1
+        if not stk:
+            stk.append((i,ch_idx))
+            ch_idx+=1
         else:
-            return func(n+li[s-1]+s+3,s-1)
-
-    if N<=10:
-        ttt=check[N]
-    else:
-        for i in range(1,34):
-            if N<li[i]:
-                ttt=func(N,i-1)
-                break
-            elif N==li[i]:
-                ttt="o"
-                break
-    if moople[N]==ttt:
-        print(f'{N} : {ttt}')
-    else:
-        print(f"{N} ___ No -> {ttt} -< {moople[N]}")
-print(moo(2))
+            if stk[-1][0]<i:
+                stk.append((i,ch_idx))
+                ch_idx+=1
+            else:
+                tmp_li=[]
+                while stk[-1][0]>=i:
+                    now_val,now_idx=stk.pop()
+                    idx+=1
+                    if not stk:
+                        res=max(res,now_val*(ch_idx))
+                        break
+                    else:
+                        res=max(res,now_val*(ch_idx-stk[-1][1]-1))
+                res=max(res,i*idx)
+                stk.append((i,ch_idx))
+                ch_idx+=1
+    print(stk,ch_idx)
+    idx=1
+    while stk:
+        now_val,now_idx=stk.pop()
+        if not stk:
+            res=max(res,now_val*(ch_idx))
+        else:
+            res=max(res,now_val*(ch_idx-stk[-1][1]-1))
+        idx+=1
+    print(res)
