@@ -2,9 +2,10 @@ import java.io.IOException;
 import java.util.*;
 import java.lang.Math;
 public class Main {
+
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-
+        
         int[] li=new int[4];
         String[] st =sc.nextLine().split(" ");
         for(int i=0;i<4;i++){
