@@ -1,32 +1,35 @@
 K=int(input())
 li=list(map(str,input().split()))
-plag=False
 res=[]
+all_word=[]
 
-def check(word):
+def check(word,lens=0):
     if len(word)==1:
         return True
     tmp=True
-    for i in range(len(word)-1):
-        ch=exec("True if "+word[i]+li[i]+word[i+1]+" else False")
-        if not ch:
-            tmp=False
-            break
+    if lens==0:
+        for i in range(len(word)-1):
+            ch=eval("True if "+word[i]+li[i]+word[i+1]+" else False")
+            if not ch:
+                tmp=False
+                break
+    else:
+        tmp=eval("True if "+word[0]+li[lens-1]+word[1]+" else False")
     return tmp
 
+all_word=[]
 def func(word,p):
-    global plag,res
-    if plag:
-        return
+    global all_word
     if word!="" and len(word)==K+1:
-        res.append(int(word))
-        plag=True
+        all_word.append(word)
         return
-    for i in range(0,10):
+    for i in range(10):
         if i not in p:
-            stts=check(word+str(i))
-            if stts:
+            if len(word)==0:
                 func(word+str(i),p+[i])
+            else:
+                if check(word[-1]+str(i),len(word)):
+                    func(word+str(i),p+[i])
 
-func("",[])
-print(res)
+func('',[])
+print(f'{all_word[-1]}\n{all_word[0]}')
