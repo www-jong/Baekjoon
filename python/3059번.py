@@ -1,0 +1,1 @@
+exec('print(2015-sum([ord(i)for i in set(list(input()))]));'*int(input()))

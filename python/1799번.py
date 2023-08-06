@@ -1,43 +1,41 @@
-
+# 시간초과
 N=int(input())
-oli=[[0]*(N+1)]
-dics={'0,'+str(N):1}
-for i in range(1,N+1):
-    tmp=[0]+list(map(int,input().split()))
-    for j in range(1,N+1):
-        if tmp[j]==0:
-            dics[str(i)+","+str(j)]=1
-    oli.append(tmp)
-dx=[1,1,-1,-1]
-dy=[-1,1,-1,1]
+li=[]
 res=0
-def colors(x,y):
-    tmpdic={}
-    for i in range(4):
-        for j in range(N+1):
-            nx=x+dx[i]*j
-            ny=y+dy[i]*j
-            if 1<=nx<=N and 1<=ny<=N:
-                if str(nx)+","+str(ny) not in tmpdic:
-                    tmpdic[str(nx)+","+str(ny)]=1
-                #print(f' blocked! {nx}:{ny} in {x}:{y}')
-            else:
-                break
-    return tmpdic
+def updates(x,y):
+    d1={}
+    for i in range(-N,N+1):
+        if 0<=x+i<N and 0<=y+i<N:
+            if (x+i,y+i) not in d1:d1[(x+i,y+i)]=1
+        if 0<=x+i<N and 0<=y-i<N:
+            if (x+i,y-i) not in d1:d1[(x+i,y-i)]=1
+    return d1
 
-t=0
-def func(x,y,dic,now):
-    global res,t
-    t+=1
-    if x==N+1 and y==1:
-        res=max(res,now)
+def func(x,y,dic_check,count):
+    global res,ch
+    if y==N:
+        x+=1
+        y=0
+
+    if x==N or len(dic_check)>=N*N:
+        res=max(res,count)
+        ch+=1
         return
-    #print(f'{x}:{y}, {dic}')
-    if str(x)+","+str(y) not in dic:
-        #print(f' now go {x}:{y}')
-        new_dic=colors(x,y)
-        func(x+1 if y==N else x,1 if y==N else y+1,dict(new_dic,**dic),now+1)
-    func(x+1 if y==N else x,1 if y==N else y+1,dic,now)    
-func(0,N,dics,0)
+    if (x,y) not in dic_check:
+        tmp_check=updates(x,y)
+        tmp_check.update(dic_check)
+        func(x,y+1,tmp_check,count+1)
+
+    func(x,y+1,dic_check,count)
+dic={}
+ch=0
+for i in range(N):
+    tmp=list(map(int,input().split()))
+    for j in range(N):
+        if tmp[j]==0:
+            dic[(i,j)]=1
+    li.append(tmp)
+
+func(0,0,dic,0)
 print(res)
-print(t)
+print(ch)

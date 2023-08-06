@@ -1,6 +1,6 @@
 T=int(input())
 for i in range(T):
-    a,b=map(int,input().split())
+    a,b=input().split()
     if a!=b:
         print('ERROR')
     else:
