@@ -1,1 +1,5 @@
-print(ord("A")-1)
+a=''
+if a:
+    print('d')
+else:
+    print('g')
