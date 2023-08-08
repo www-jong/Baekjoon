@@ -1,9 +1,27 @@
 N=int(input())
-se=int(input())
+M=int(input())
 S=input()
 n_s='I'+'OI'*N
-dp=[0]*(len(S))
-for i in range(N,len(S)):
-    if S[i-N:i]==N:
-        dp[i]=dp[i-1]+1
-print(dp[se-1])
+res=0
+count=0
+plag=0
+for i in S:
+    if not plag:
+        if i=="I":
+            plag=1
+            count+=1
+        else:
+            count=0
+    else:
+        if i=="O":
+            plag=0
+            count+=1
+        else:
+            plag=1
+            count=1
+    if count==1+2*N:
+        res+=1
+        count-=2
+print(res)
+
+

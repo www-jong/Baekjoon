@@ -1,5 +1,2 @@
-a=''
-if a:
-    print('d')
-else:
-    print('g')
+a=1234
+print(str(a)[-1]+str(a)[:-1])
