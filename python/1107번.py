@@ -1,28 +1,23 @@
 import sys
-sys.setrecursionlimit(1000000)
+sys.setrecursionlimit(100000)
 def func(v,idx):
-    global gap
+    global res
     if v:
-        if abs(int(v)-int(N))<gap[0]:
-            gap=[abs(int(v)-int(N)),v]
-        elif abs(int(v)-int(N))==gap[0]:
-            if len(v)<gap[0]:
-                gap=[abs(int(v)-int(N)),v]
-    if idx==len(N)+1:
+        if abs(int(v)-int(N))+len(v)<res:
+            res=abs(int(v)-int(N))+len(v)
+    if idx>=len(N)+2:
         return
-    for i in ri:
+
+    for i in button:
         func(v+str(i),idx+1)
+
 N=input()
 M=int(input())
-
-gap=[10**7,0]
-ri=[i for i in range(10)]
 if M!=0:
-    for i in list(map(int,input().split())):
-        ri.remove(i)
-func('',0)
-if gap[0]==0:
-    print(len(N))
+    M_li=list(map(int,input().split()))
+    button=[i for i in range(10) if i not in M_li]
 else:
-    print(min(gap[0]+len(gap[1]),abs(int(N)-100)))
-print(gap)
+    button=[i for i in range(10)]
+res=int(N)-100 if int(N)>100 else 100-int(N)
+func('',0)
+print(res)
