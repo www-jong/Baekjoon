@@ -1,12 +1,43 @@
-import heapq,random
-while True:
-    a=[]
-    ans=int(input())
-    if ans==0:
-        break
-    b=[i for i in range(1,ans+1)]
-    random.shuffle(b)
-    for i in b:
-        heapq.heappush(a,i)
-    print(a)
-    print('중간값 위치:  %d:%d'%(ans//2+ans%2,a.index(ans//2+ans%2)))
+#infix = [ '2', '*', '(', '5', '+', '7', ')', '+', '8']
+infix = [ '2', '+', '3', '*', '4']
+postfix = []
+stack = []
+operator = ['*', '/', '+', '-']
+bracket = ['(', ')']
+
+def is_number(x):
+    if x not in operator and x not in bracket:
+        return True
+    else:
+        return False
+    
+def pref(x):
+    if x is '*' or x is '/':
+        return 1
+    elif x is '+' or x is '-':
+        return 0
+
+for c in infix:
+    if is_number(c):
+        postfix.append(c)
+    elif c in operator:
+        p = pref(c)
+        while len(stack) > 0:
+            top = stack[-1]
+            if pref(top) <= p:
+                break
+            postfix.append(stack.pop())            
+        stack.append(c)
+        
+    elif c == '(':
+        stack.append(c)
+    elif c == ')':
+        while True:
+            x = stack.pop()
+            if x == '(':
+                break
+            postfix.append(x)
+            
+while len(stack) > 0:
+    postfix.append(stack.pop())
+print(postfix)
