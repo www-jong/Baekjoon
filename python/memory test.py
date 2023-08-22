@@ -16,26 +16,13 @@
 
 # +
 import psutil
-n=int(input())
-def star(n):
-    if n==3:
-        return [['*','*','*'],['*',' ','*'],['*','*','*']]
-    x=[[0]*n for i in range(n)]
-    a=star(n//3)
-    for i in range(n):
-        for j in range(n):
-            if i//(n//3)==j//(n//3)==1:
-                x[i][j]=' '
-            else:
-                x[i][j]=a[i%(n//3)][j%(n//3)]
-    return x
-a=star(n)
+dic={}
+for i in range(300000,-1,-1):
+    dic[i]=i*2
+
 p=psutil.Process()
 print("%10.5f"%(p.memory_info().rss/2**20))
-for i in range(n):
-    for j in range(n):
-        print(a[i][j],end='')
-    print(end='\n')
+b=dict(reversed(dic.items()))
 
 ## 이것도 되긴되는데.. 메모리초과
 # -
