@@ -1,24 +1,46 @@
-g=1
+import sys
+input=sys.stdin.readline
+idx=1
 while True:
     res=0
-    n,m=map(int,input().split())
-    if n==0 and m==0:break
-    tree=[[] for i in range(n+1)]
-    visit=[0]*(n+1)
-    lnode=[i for i in range(n+1)]
-    for i in range(m):
+    N,M=map(int,input().split())
+    if N==0 and M==0:
+        break
+    graph=[[] for i in range(N+1)]
+    visit=[0]*(N+1)
+    for i in range(M):
         a,b=map(int,input().split())
-        tree[a].append(b)
-        if lnode[b]==b:
-            lnode[b]=a
-        else:
-            res=''
-    print(f'Case {g}: ',end='')
+        graph[a].append(b)
+        graph[b].append(a)
+    for i in range(1,N+1):
+        if not visit[i]:
+            q=[]
+            res+=1
+            #print(f'!{i}')
+            q.append((i,0))
+            visit[i]=0
+            plag=0
+            while q:
+                x,before_node=q.pop()
+                for node in graph[x]:
+                    if node==before_node:
+                        continue
+                    if not visit[node]:
+                        #print(f'방문 {node}')
+                        visit[node]=1
+                        q.append((node,x))
+                    else:
+                        res-=1
+                        plag=1
+                        break
+                if plag:
+                    break
+    #print(res)
+    #print(graph)
     if res==0:
-        print('no trees.')
+        print(f'Case {idx}: No trees.')
     elif res==1:
-        print('There is one tree.')
+        print(f'Case {idx}: There is one tree.')
     else:
-        print(f'A forest of {res} trees.')
-    
-    g+=1
+        print(f'Case {idx}: A forest of {res} trees.')
+    idx+=1

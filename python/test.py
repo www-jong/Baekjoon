@@ -1,35 +1,43 @@
-import sys
-input = sys.stdin.readline
+dx,dy=[1,-1,0,0],[0,0,1,-1]
+def dfs(x,y,visit,li,move):
+    global res
+    if move==3:
+        return
+    for i in range(4):
+        nx,ny=x+dx[i],y+dy[i]
+        plag=0
+        while 0<=nx<N and 0<=ny<N:
+            if li[nx][ny]==1 and not plag and not visit[nx][ny]:
+                plag=1
+            elif plag:
+                if li[nx][ny] and not visit[nx][ny]:
+                    res.add((nx,ny))
+                    visit[nx][ny]=1
+                    li[nx][ny]=0
+                    dfs(nx,ny,visit,li,move+1)
+                    visit[nx][ny]=0
+                    li[nx][ny]=1
+                    break
+                elif not li[nx][ny] and not visit[nx][ny]:
+                    visit[nx][ny]=1
+                    dfs(nx,ny,visit,li,move+1)
+                    visit[nx][ny]=0
+            nx+=dx[i]
+            ny+=dy[i]
 
-N = int(input())
-A = [*map(int, input().split())]
-
-LIS = [A[0]]
-v=[]
-def findPlace(e):
-    start = 0
-    end = len(LIS) - 1
-    
-    while start <= end:
-        mid = (start + end) // 2
-        
-        if LIS[mid] == e:
-            return mid
-        elif LIS[mid] < e:
-            start = mid + 1
-        else:
-            end = mid - 1
-            
-    return start
-
-for item in A:
-    if LIS[-1] < item:
-        LIS.append(item)
-        v.append(item)
-    else:
-        idx = findPlace(item)
-        LIS[idx] = item
-
-print(len(LIS))
-print(LIS)
-print(v)
+for m in range(int(input())):
+    N=int(input())
+    start=[]
+    res=set()
+    li=[]
+    visit=[[0]*N for i in range(N)]
+    for i in range(N):
+        tmp=list(map(int,input().split()))
+        for j in range(N):
+            if tmp[j]==2:
+                start=[i,j]
+                tmp[j]=0
+        li.append(tmp)
+    g=dfs(start[0],start[1],visit,li,0)
+    print(res)
+    print(f'#{m+1}',len(res))
