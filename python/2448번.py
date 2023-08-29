@@ -1,8 +1,20 @@
 N=int(input())
+def func(x):
+    res=[]
+    if x==3:
+        res=['  *  ',' * * ','*****']
+        return res
+    else:
+        li=func(x//2)
+        res=li[:]
+        tmp=li[:]
+        for i in range(x//2):
+            tmp[i]+=' '+tmp[i]
+        res+=tmp
+        for i in range(x//2):
+            res[i]=' '*(x//2)+res[i]+' '*(x//2)
 
-
-
-# N : 3,6,12,24,...
-#     1,2,4,8,16...
-s="     *     \n    * *    \n   *****   \n  *     *  \n * *   * * \n***** *****"
-print(s*N)
+        return res
+li=func(N)
+for i in range(N):
+    print(li[i])
