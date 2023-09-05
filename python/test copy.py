@@ -4,8 +4,6 @@ import random
 import requests
 
 
-RIOT_API = 'RGAPI-1f2579a7-347c-43da-be90-bd8ad58dfb03'
-get_data = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + '구형깔깔이' + '?api_key=' + RIOT_API
 
 username = '구형깔깔이'
 get_data = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + username + '?api_key=' + RIOT_API
