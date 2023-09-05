@@ -5,8 +5,7 @@ import requests
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-RIOT_API = 'RGAPI-1f2579a7-347c-43da-be90-bd8ad58dfb03'
-get_data = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + '구형깔깔이' + '?api_key=' + RIOT_API
+.com/lol/summoner/v4/summoners/by-name/" + '구형깔깔이' + '?api_key=' + RIOT_API
 r = requests.get(get_data)
 
 
