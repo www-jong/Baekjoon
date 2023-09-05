@@ -1,6 +1,29 @@
-import os
-os.system('C:\Windows\System32\powercfg.exe s 768ae702-a0a6-4ec2-92b6-9492c5c29a0d')
-os.system('C:\Windows\System32\powercfg.exe s 381b4222-f694-41f0-9685-ff5bb260df2e')
-# 고성능C:\Windows\System32\powercfg.exe s 768ae702-a0a6-4ec2-92b6-9492c5c29a0d
-# 저전력 C:\Windows\System32\powercfg.exe s 381b4222-f694-41f0-9685-ff5bb260df2e
-#print(os.system('powercfg list'))
+
+from threading import Thread
+import random
+import requests
+
+
+RIOT_API = 'RGAPI-1f2579a7-347c-43da-be90-bd8ad58dfb03'
+get_data = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + '구형깔깔이' + '?api_key=' + RIOT_API
+
+username = '구형깔깔이'
+get_data = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + username + '?api_key=' + RIOT_API
+r = requests.get(get_data)
+r = r.json()
+if 'status' in r:
+    data={'name':'없는소환사입니다.'}
+
+data = {}
+if 'summonerLevel' in r:
+    data['level'] = r['summonerLevel']
+if 'name' in r:
+    data['name'] = '구형깔깔이'
+print(r)
+tier_url = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+ r['id'] +'?api_key=' + RIOT_API
+r2  = requests.get(tier_url)
+r2=r2.json()[0]
+print('___')
+print(r2)
+print(r2['tier'],r2['rank'])
+print(str((r2['wins']/(r2['losses']+r2['wins']))*100)+"%")
