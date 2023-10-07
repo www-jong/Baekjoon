@@ -1,1 +1,2 @@
-print(int(input())*int(input())//2)
+W,H=map(int,input().split())
+print(W*H/2)
