@@ -2,10 +2,9 @@ import heapq,sys
 input=sys.stdin.readline
 N,M,K=map(int,input().split())
 graph=[[] for _ in range(N+1)]
-INF=int(1e9)
+INF=int(1e11)
 for i in range(M):
     U,V,C=map(int,input().split())
-    #graph[U].append((V,C))
     graph[V].append((U,C))
 station=list(map(int,input().split()))
 def dstra():
@@ -29,7 +28,7 @@ res=[0,-1]
 distance=[INF]*(N+1)
 dstra()
 for i in range(1,N+1):
-    if distance[i]>res[1]:
+    if distance[i]>res[1] and distance[i]!=INF:
         res=[i,distance[i]]
 print(res[0])
 print(res[1])
