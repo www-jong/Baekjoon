@@ -4,17 +4,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
-
-class test {
+import java.util.Arrays;
+class Main {
 	static public void main(String []args) throws IOException{
+
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        //StringTokenizer st = new StringTokenizer(br.readLine());
+        int N= Integer.parseInt(br.readLine());
+        int[] li=new int[N];
+        for(int i=0;i<N;i++){
+            li[i]=Integer.parseInt(br.readLine());
+        }
+        Arrays.sort(li);
+        for(int i=0;i<N;i++){
+            bw.write(Integer.toString(li[i])+'\n');
+        }
 
-        int N = Integer.parseInt(st.nextToken());
-        String res = "0";
-
-        bw.write(res);
         bw.flush();
         bw.close();
 
