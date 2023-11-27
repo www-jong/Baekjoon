@@ -1,11 +1,11 @@
-N,M=map(int,input().split())
-A=sorted(list(map(int,input().split())),reverse=True)
-B=sorted(list(map(int,input().split())))
-r=0
-idx=0
-for i in B:
-    if A[idx]>i:
-        r+=A[idx]-i
-        idx+=1
-    if idx==N:break
-print(r)
+S=input()
+if S=='M':
+    print('MatKor')
+elif S=='W':
+    print('WiCys')
+elif S=='C':
+    print('CyKor')
+elif S=='A':
+    print('AlKor')
+elif S=='$':
+    print('$clear')
